@@ -176,10 +176,12 @@ stages:
           - checkout: self
           
           - task: TerraformInstaller@1
+            displayName: 'Install Terraform'
             inputs:
               terraformVersion: '1.5.7'
           
           - task: TerraformTaskV4@4
+            displayName: 'Terraform Init - Initialize Backend'
             inputs:
               provider: 'azurerm'
               command: 'init'
@@ -191,6 +193,7 @@ stages:
               backendAzureRmKey: 'simple-app.tfstate'
           
           - task: TerraformTaskV4@4
+            displayName: 'Terraform Plan - Preview Changes'
             inputs:
               provider: 'azurerm'
               command: 'plan'
@@ -198,6 +201,7 @@ stages:
               environmentServiceNameAzureRM: $(serviceConnection)
           
           - task: TerraformTaskV4@4
+            displayName: 'Terraform Apply - Deploy Infrastructure'
             inputs:
               provider: 'azurerm'
               command: 'apply'
