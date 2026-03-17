@@ -172,9 +172,11 @@ stages:
       runOnce:
         deploy:
           steps:
-          - task: TerraformInstaller@0
+          - checkout: self
+          
+          - task: TerraformInstaller@1
             inputs:
-              terraformVersion: 'latest'
+              terraformVersion: '1.5.7'
           
           - task: TerraformTaskV4@4
             inputs:
@@ -201,6 +203,8 @@ stages:
       runOnce:
         deploy:
           steps:
+          - checkout: self
+          
           - task: DotNetCoreCLI@2
             inputs:
               command: 'publish'
@@ -220,6 +224,8 @@ stages:
       runOnce:
         deploy:
           steps:
+          - checkout: self
+          
           - task: NodeTool@0
             inputs:
               versionSpec: '18.x'
