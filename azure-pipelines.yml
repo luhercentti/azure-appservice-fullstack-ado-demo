@@ -10,6 +10,7 @@ variables:
 
 stages:
 - stage: Test
+  condition: eq(variables['Build.Reason'], 'PullRequest')
   jobs:
   - job: TestBackend
     steps:
@@ -164,7 +165,7 @@ stages:
 
 - stage: Deploy
   dependsOn: Test
-  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
+  condition: and(succeededOrSkipped(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
   jobs:
   - deployment: DeployInfrastructure
     environment: 'production'
