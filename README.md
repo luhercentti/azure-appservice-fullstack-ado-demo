@@ -144,6 +144,11 @@ az role assignment create \
   --role "Storage Blob Data Contributor" \
   --scope "/subscriptions/resourceID/resourceGroups/rg-terraform-state/providers/Microsoft.Storage/storageAccounts/stterraformlhctest"
 
+az role assignment create \
+  --assignee IDDDDDDDD \
+  --role "Storage Account Contributor" \
+  --scope "/subscriptions/resourceID/resourceGroups/rg-terraform-state/providers/Microsoft.Storage/storageAccounts/stterraformlhctest"
+
 
 ### Jobs
 
