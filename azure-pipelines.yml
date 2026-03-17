@@ -165,7 +165,7 @@ stages:
 
 - stage: Deploy
   dependsOn: Test
-  condition: and(succeededOrSkipped(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
+  condition: and(in(dependencies.Test.result, 'Succeeded', 'Skipped'), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
   jobs:
   - deployment: DeployInfrastructure
     environment: 'production'
