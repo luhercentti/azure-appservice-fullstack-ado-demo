@@ -140,9 +140,9 @@ az storage container create \
   --auth-mode login
 
 az role assignment create \
-  --assignee 1ffb6889-6062-4b03-a7c3-6575221fc32e \
+  --assignee IDDDDDDDD \
   --role "Storage Blob Data Contributor" \
-  --scope "/subscriptions/IDDDDD/resourceGroups/rg-terraform-state/providers/Microsoft.Storage/storageAccounts/stterraformlhctest"
+  --scope "/subscriptions/resourceID/resourceGroups/rg-terraform-state/providers/Microsoft.Storage/storageAccounts/stterraformlhctest"
 
 
 ### Jobs
