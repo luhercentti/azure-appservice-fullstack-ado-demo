@@ -124,6 +124,11 @@ terraform apply -var="environment=dev"
 
 Triggered on pushes to `main`. Runs on `windows-latest` with .NET 8.x and Node.js 18.x.
 
+# Grant Contributor role at subscription level
+az role assignment create \
+  --assignee 1ffb6889-6062-4b03-a7c3-6575221fc32e \
+  --role "Contributor" \
+  --scope "/subscriptions/d31f813b-29e0-4f41-a319-ba3b1aab6b33"
 
 az group create --name rg-terraform-state --location "East US"
 
