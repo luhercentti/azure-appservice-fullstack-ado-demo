@@ -25,11 +25,11 @@ resource "azurerm_service_plan" "main" {
   name                = "sp-simpleapp-${var.environment}"
   resource_group_name = azurerm_resource_group.main.name
   location            = azurerm_resource_group.main.location
-  os_type             = "Linux"
+  os_type             = "Windows"
   sku_name            = "F1"
 }
 
-resource "azurerm_linux_web_app" "api" {
+resource "azurerm_windows_web_app" "api" {
   name                = "app-simpleapp-api-${var.environment}"
   resource_group_name = azurerm_resource_group.main.name
   location            = azurerm_service_plan.main.location
@@ -37,7 +37,8 @@ resource "azurerm_linux_web_app" "api" {
 
   site_config {
     application_stack {
-      dotnet_version = "8.0"
+      current_stack  = "dotnet"
+      dotnet_version = "v8.0"
     }
   }
 }
