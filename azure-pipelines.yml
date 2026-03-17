@@ -6,7 +6,7 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
-  serviceConnection: 'Azure-lhc-tests-serviceconnection'
+  serviceConnection: 'lhc-tests'
 
 stages:
 - stage: Test
@@ -189,6 +189,13 @@ stages:
               backendAzureRmStorageAccountName: 'stterraformstate'
               backendAzureRmContainerName: 'tfstate'
               backendAzureRmKey: 'simple-app.tfstate'
+          
+          - task: TerraformTaskV4@4
+            inputs:
+              provider: 'azurerm'
+              command: 'plan'
+              workingDirectory: '$(System.DefaultWorkingDirectory)/infrastructure'
+              environmentServiceNameAzureRM: $(serviceConnection)
           
           - task: TerraformTaskV4@4
             inputs:

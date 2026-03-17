@@ -37,7 +37,7 @@ resource "azurerm_linux_web_app" "api" {
   }
 }
 
-resource "azurerm_static_site" "frontend" {
+resource "azurerm_static_web_app" "frontend" {
   name                = "stapp-simpleapp-${var.environment}"
   resource_group_name = azurerm_resource_group.main.name
   location            = "East US2"

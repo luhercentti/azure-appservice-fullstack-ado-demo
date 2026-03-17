@@ -3,5 +3,5 @@ output "api_url" {
 }
 
 output "frontend_url" {
-  value = "https://${azurerm_static_site.frontend.default_host_name}"
+  value = "https://${azurerm_static_web_app.frontend.default_host_name}"
 }
