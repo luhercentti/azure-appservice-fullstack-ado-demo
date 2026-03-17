@@ -186,7 +186,11 @@ stages:
               provider: 'azurerm'
               command: 'init'
               workingDirectory: '$(System.DefaultWorkingDirectory)/infrastructure'
-              commandOptions: '-upgrade'
+              backendServiceArm: $(serviceConnection)
+              backendAzureRmResourceGroupName: 'rg-terraform-state'
+              backendAzureRmStorageAccountName: 'stterraformlhctest'
+              backendAzureRmContainerName: 'tfstate'
+              backendAzureRmKey: 'simple-app.tfstate'
           
           - task: TerraformTaskV4@4
             displayName: 'Terraform Plan - Preview Changes'

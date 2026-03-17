@@ -124,6 +124,27 @@ terraform apply -var="environment=dev"
 
 Triggered on pushes to `main`. Runs on `windows-latest` with .NET 8.x and Node.js 18.x.
 
+
+az group create --name rg-terraform-state --location "East US"
+
+az storage account create \
+  --name stterraformlhctest \
+  --resource-group rg-terraform-state \
+  --location "East US" \
+  --sku Standard_LRS \
+  --min-tls-version TLS1_2
+
+az storage container create \
+  --name tfstate \
+  --account-name stterraformlhctest \
+  --auth-mode login
+
+az role assignment create \
+  --assignee 1ffb6889-6062-4b03-a7c3-6575221fc32e \
+  --role "Storage Blob Data Contributor" \
+  --scope "/subscriptions/IDDDDD/resourceGroups/rg-terraform-state/providers/Microsoft.Storage/storageAccounts/stterraformlhctest"
+
+
 ### Jobs
 
 | Job | Steps |
